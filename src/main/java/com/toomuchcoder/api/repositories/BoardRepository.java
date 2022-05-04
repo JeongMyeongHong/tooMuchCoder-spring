@@ -1,18 +1,15 @@
 package com.toomuchcoder.api.repositories;
 
-import org.springframework.stereotype.Repository;
-
 /**
  * packageName   :   com.toomuchcoder.api.repositories
- * fileName      :   UserRepositoryImpl
+ * fileName      :   BoardRepository
  * author        :   JeongmyeongHong
- * date          :   2022-05-03
+ * date          :   2022-05-04
  * desc          :
  * ============================================
  * DATE             AUTHOR              NOTE
  * ============================================
- * 2022-05-03      JeongmyoengHong     최초 생성
+ * 2022-05-04      JeongmyoengHong     최초 생성
  */
-@Repository
-public class UserRepositoryImpl implements UserRepository{
+public interface BoardRepository {
 }
