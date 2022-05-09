@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.services;
+package com.toomuchcoder.api.board.services;
 
 /**
  * packageName   :   com.toomuchcoder.api.services

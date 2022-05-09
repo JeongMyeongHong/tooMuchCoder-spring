@@ -1,24 +1,24 @@
-package com.toomuchcoder.api.controllers;
+package com.toomuchcoder.api.soccer.controllers;
 
-import com.toomuchcoder.api.services.BoardService;
+import com.toomuchcoder.api.soccer.services.TeamService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * packageName   :   com.toomuchcoder.api.controllers
- * fileName      :   BoardController
+ * packageName   :   com.toomuchcoder.api.soccer.controllers
+ * fileName      :   TeamController
  * author        :   JeongmyeongHong
- * date          :   2022-05-04
+ * date          :   2022-05-09
  * desc          :
  * ============================================
  * DATE             AUTHOR              NOTE
  * ============================================
- * 2022-05-04      JeongmyoengHong     최초 생성
+ * 2022-05-09      JeongmyoengHong     최초 생성
  */
 @RestController
-@RequestMapping("/board")
 @RequiredArgsConstructor
-public class BoardController {
-    private final BoardService service;
+@RequestMapping("/team")
+public class TeamController {
+    private final TeamService service;
 }

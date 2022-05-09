@@ -1,7 +1,9 @@
-package com.toomuchcoder.api.domains;
+package com.toomuchcoder.api.board.domains;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;
+
+import javax.persistence.*;
 
 /**
  * packageName   :   com.toomuchcoder.api.domains
@@ -16,5 +18,9 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
+@Entity
+@Table(name = "boards")
 public class Board {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
 }

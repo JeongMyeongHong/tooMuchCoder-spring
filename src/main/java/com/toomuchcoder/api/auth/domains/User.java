@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.domains;
+package com.toomuchcoder.api.auth.domains;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

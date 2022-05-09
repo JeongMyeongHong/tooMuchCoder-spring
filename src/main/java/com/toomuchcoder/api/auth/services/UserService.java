@@ -1,6 +1,6 @@
-package com.toomuchcoder.api.services;
+package com.toomuchcoder.api.auth.services;
 
-import com.toomuchcoder.api.domains.User;
+import com.toomuchcoder.api.auth.domains.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;

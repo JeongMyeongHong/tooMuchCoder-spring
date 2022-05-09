@@ -1,4 +1,8 @@
-package com.toomuchcoder.api.repositories;
+package com.toomuchcoder.api.board.repositories;
+
+import com.toomuchcoder.api.board.domains.Board;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 /**
  * packageName   :   com.toomuchcoder.api.repositories
@@ -11,5 +15,6 @@ package com.toomuchcoder.api.repositories;
  * ============================================
  * 2022-05-04      JeongmyoengHong     최초 생성
  */
-public interface BoardRepository {
+@Repository
+public interface BoardRepository extends JpaRepository<Board, Long> {
 }

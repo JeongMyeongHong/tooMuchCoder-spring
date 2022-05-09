@@ -1,6 +1,6 @@
-package com.toomuchcoder.api.services;
+package com.toomuchcoder.api.board.services;
 
-import com.toomuchcoder.api.repositories.BoardRepository;
+import com.toomuchcoder.api.board.repositories.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +17,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class BoardServiceImpl implements BoardService{
+public class BoardServiceImpl implements BoardService {
     private final BoardRepository repository;
 }
