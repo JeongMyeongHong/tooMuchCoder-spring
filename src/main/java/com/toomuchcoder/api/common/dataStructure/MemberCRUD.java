@@ -71,8 +71,6 @@ public class MemberCRUD {
                     if (service.existsById(("hong"))) service.delete(temp);
                     else System.out.println("존재 하지 않는 키값입니다.");
                     break;
-
-
                 case "4":
                     System.out.println("4.findById");
                     if (service.existsById(("hong"))) System.out.println(service.findById("hong"));
@@ -148,7 +146,7 @@ public class MemberCRUD {
     static class MemberServiceImpl implements MemberService {
         private final Map<String, Member> map;
 
-        MemberServiceImpl(){
+        public MemberServiceImpl(){
             this.map = new HashMap<>();
         }
 
@@ -179,8 +177,8 @@ public class MemberCRUD {
 
         @Override
         public List<Member> findAll() {
-            List<Member> list = new ArrayList<>(){};
-            map.keySet().forEach(key -> list.add( map.get(key)));
+            List<Member> list = new ArrayList<>();
+            map.keySet().forEach(key -> list.add(map.get(key)));
             return list;
         }
 
