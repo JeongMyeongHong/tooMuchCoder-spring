@@ -68,9 +68,8 @@ public class Q1__Gugudan {
             result += temp;
         }
         System.out.println("Sum : "+result);
-        // 플레이어(Math 랜덤값)와 컴퓨터(Random 랜덤값) 주사위 굴리기를 해 이기면
-        // "Win", 비기면 "Draw.", 지면 "Lose"를 출력하세요.
         int player=(int)(Math.random()*6)+1;
+        double rand = Math.random(); //0~1 사이의 정수
         System.out.println("플레이어 숫자"+player);
         int com= new Random().nextInt(5)+1;
         System.out.println("컴퓨터 숫자"+com);
