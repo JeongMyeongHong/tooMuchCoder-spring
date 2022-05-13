@@ -14,6 +14,7 @@ package com.toomuchcoder.api.common.lambda;
 public class Calculator {
     public static void main(String... args) {
         var s = "계산기";
+
         System.out.println(s);
         Calculator c = new Calculator();
         System.out.println("10 + 5 = " + c.operate(10, 5, (a, b) -> a+b));

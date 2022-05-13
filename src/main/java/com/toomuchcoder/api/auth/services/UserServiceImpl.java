@@ -2,6 +2,7 @@ package com.toomuchcoder.api.auth.services;
 
 import com.toomuchcoder.api.auth.repositories.UserRepository;
 import com.toomuchcoder.api.auth.domains.User;
+import com.toomuchcoder.api.common.dataStructure.Box;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -77,5 +78,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean existsById(String userid) {
         return repository.existsById(0L); // userid 타입이 다름
+    }
+
+
+    //custom
+    @Override
+    public List<User> listFindByUserName(String name) {
+        List<User> ls = repository.findAll();
+        Box<String, User> box = new Box<>();
+        box.listFindByUserName(name);
+        //ls.stream().filter(...)
+        return null;
     }
 }

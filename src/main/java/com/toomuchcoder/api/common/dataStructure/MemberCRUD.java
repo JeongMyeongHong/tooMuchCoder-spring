@@ -144,7 +144,7 @@ public class MemberCRUD {
     }
 
     static class MemberServiceImpl implements MemberService {
-        private final Map<String, Member> map;
+        private final HashMap<String, Member> map;
 
         public MemberServiceImpl(){
             this.map = new HashMap<>();

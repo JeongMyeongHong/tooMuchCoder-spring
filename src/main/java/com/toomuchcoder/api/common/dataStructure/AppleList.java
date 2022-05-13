@@ -1,13 +1,13 @@
 package com.toomuchcoder.api.common.dataStructure;
 
 import static com.toomuchcoder.api.common.lambda.Lambda.*;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -23,72 +23,54 @@ import java.util.stream.Collectors;
  */
 // Apple의 객체가 color price origin
 public class AppleList {
-    public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
+    @Test
+    void appleListTest() {
         AppleService service = new AppleServiceImpl();
-        while (true) {
-            System.out.println("0.Exit 1.save 2.update 3.delete 4.findAll 5.findByOrigin 6.findByColor 7.findById 8.count 9.clear");
-            switch (s.next()) {
-                case "0":
-                    System.out.println("Exit");
-                    return;
-                case "1":
-                    Apple yd = new Apple.Builder()
-                            .color("RED")
-                            .origin("영동")
-                            .price(1000)
-                            .build();
-                    service.save(yd);
-                    Apple yd2 = new Apple.Builder()
-                            .color("BLUE")
-                            .origin("영동")
-                            .price(1500)
-                            .build();
-                    service.save(yd2);
-                    Apple pg = new Apple.Builder()
-                            .color("RED")
-                            .origin("풍기")
-                            .price(2000)
-                            .build();
-                    service.save(pg);
-                    break;
-                case "2":
-                    System.out.println("2.update");
-                    break;
-                case "3":
-                    System.out.println("3.delete");
-                    break;
-                case "4":
-                    System.out.println("4.findAll");
-                    break;
-                case "5":
-                    System.out.println("5.findByOrigin");
-                    System.out.println(service.findByOrigin("영동"));
-                    break;
-                case "6":
-                    System.out.println("6.findByColor");
-                    break;
-                case "7":
-                    System.out.println("7.findById");
-                    System.out.println(service.findAll());
-                    break;
-                case "8":
-                    System.out.println("8.count");
-                    System.out.println("총 회원수: " + service.count() + " 명");
-                    break;
-                case "9":
-                    System.out.println("9.clear");
-                    service.clear();
-                    break;
-                case "10":
-                    System.out.println("사과 가격은 " + integer("1000"));
-                    System.out.println("사과 가격은 " + string(1000));
-                    System.out.println("사과 가격은 " + string("1000"));
-                default:
-                    break;
+        System.out.println("###   save   ###");
+        Apple yd = new Apple.Builder()
+                .color("RED")
+                .origin("영동")
+                .price(1000)
+                .build();
+        service.save(yd);
+        Apple yd2 = new Apple.Builder()
+                .color("BLUE")
+                .origin("영동")
+                .price(1500)
+                .build();
+        service.save(yd2);
+        Apple pg = new Apple.Builder()
+                .color("RED")
+                .origin("풍기")
+                .price(2000)
+                .build();
+        service.save(pg);
 
-            }
-        }
+        System.out.println("###   최초 count   ### \n총 사과수: " + service.count() + " 개");
+        System.out.println("###   findAll   ###");
+        System.out.println(service.findAll());
+        System.out.println("###   findByOrigin   ###");
+        System.out.println(service.findByOrigin("영동"));
+        System.out.println("###   findByColor   ###");
+        System.out.println(service.findByColor("RED"));
+        System.out.println("###   findById   ###");
+        System.out.println("첫번째 사과 정보 : "+service.findById(0));
+        System.out.println("###   update   ###");
+        Apple ca = new Apple.Builder()
+                .origin("미국")
+                .color("RAINBOW")
+                .price(9999)
+                .build();
+        service.update(0, ca);
+        System.out.println("수정된 사과정보:" +service.findById(0));
+        System.out.println("###   delete   ###");
+        service.delete(ca);
+        System.out.println("ca만 삭제 후 사과 리스트");
+        System.out.println(service.findAll());
+        System.out.println("###   clear   ###");
+        System.out.println("###   clear 전 count   ### \n총 사과수: " + service.count() + " 개");
+        service.clear();
+        System.out.println("###   clear 후 count   ### \n총 사과수: " + service.count() + " 개");
     }
 
     @Data
@@ -187,8 +169,8 @@ public class AppleList {
         }
 
         @Override
-        public List<Apple> findByColor(String Color) {
-            return null;
+        public List<Apple> findByColor(String color) {
+            return list.stream().filter(apple -> apple.getColor().equals(color)).collect(Collectors.toList());
         }
 
         @Override
@@ -207,3 +189,4 @@ public class AppleList {
         }
     }
 }
+
