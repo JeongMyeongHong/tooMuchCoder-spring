@@ -1,10 +1,9 @@
-package com.toomuchcoder.api.common.lambda;
+package com.toomuchcoder.api.common.lambdas;
 
-import static com.toomuchcoder.api.common.dataStructure.AppleList.Apple;
+import static com.toomuchcoder.api.common.dataStructure.AppleApp.Apple;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.Random;
 import java.util.function.*;
 
 /**

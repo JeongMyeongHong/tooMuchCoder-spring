@@ -1,7 +1,5 @@
 package com.toomuchcoder.api.common.dataStructure;
 
-import static com.toomuchcoder.api.common.lambda.Lambda.*;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
@@ -22,7 +20,7 @@ import java.util.stream.Collectors;
  * 2022-05-11      JeongmyoengHong     최초 생성
  */
 // Apple의 객체가 color price origin
-public class AppleList {
+public class AppleApp {
     @Test
     void appleListTest() {
         AppleService service = new AppleServiceImpl();
