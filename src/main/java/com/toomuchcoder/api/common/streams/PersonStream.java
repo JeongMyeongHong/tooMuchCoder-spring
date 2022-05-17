@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
  * DATE             AUTHOR              NOTE
  * ============================================
  * 2022-05-16      JeongmyoengHong     최초 생성
+ * 2022-05-17      JeongmyoengHong     @FunctionInterface
  */
 public class PersonStream {
 
@@ -31,42 +32,23 @@ public class PersonStream {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Person{
-        private String name, ssn, gender;
-        private int age;
+        private String name, ssn;
+        private int getGenderChk(){
+            return Integer.parseInt(ssn.substring(ssn.length()-1));
+        }
 
         @Override
         public String toString() {
-            int a = Integer.parseInt(ssn.substring(ssn.length()-1));
-            int b = Integer.parseInt(new SimpleDateFormat("YY").format(new Date()));
-            int c = Integer.parseInt(ssn.substring(0,2));
-            this.gender = a % 2 == 1 ? "남성": "여성";
-            this.age = a / 2 == 0 ? (100 + b - c) : (b - c) ;
+            int now = Integer.parseInt(new SimpleDateFormat("yy").format(new Date()));
+            int birth = Integer.parseInt(ssn.substring(0,2));
+            String gender = getGenderChk() % 2 == 1 ? "남성" : "여성";
+            int age = getGenderChk() / 3 == 0 ? (100 + now - birth) : (now - birth) ;
             return String.format("[PERSON Info] Name : %s, Sex : %s Age : %d", name, gender, age);
         }
     }
-    interface PersonService{
-        Person search(List<Person> arr, String name);
-        String getGender(List<Person> arr, String name);
-    }
-    public static class PersonServiceImpl implements PersonService{
-        private final List<Person> list;
 
-        public PersonServiceImpl() {
-            this.list = new ArrayList<>();
-        }
+    @FunctionalInterface interface PersonService{Person search(List<Person> arr, String name);}
 
-        @Override
-        public Person search(List<Person> arr, String name) {
-            return arr.stream().filter(person -> person.getName().equals(name)).collect(Collectors.toList()).get(0);
-        }
-
-        @Override
-        public String getGender(List<Person> arr, String name) {
-            return arr.stream().filter(person -> person.getName().equals(name)).collect(Collectors.toList()).get(0).getGender();
-        }
-
-
-    }
     // "홍길동", "900120-1"
     // "김유신", "970620-1"
     // "유관순", "040920-4"
@@ -75,12 +57,13 @@ public class PersonStream {
     void personStreamTest(){
         List<Person> arr = Arrays.asList(
                 Person.builder().name("홍길동").ssn("900120-1").build(),
-                Person.builder().name("김유신").ssn("970620-1").build(),
+                Person.builder().name("신사임당").ssn("970620-2").build(),
+                Person.builder().name("김유신").ssn("010620-3").build(),
                 Person.builder().name("유관순").ssn("040920-4").build()
         );
-        System.out.println(arr);
         String name = "홍길동";
-        System.out.println(name + " 검색 : " + new PersonServiceImpl().search(arr, name));
-        System.out.println(name + " 님의 성별 : " + new PersonServiceImpl().getGender(arr, name));
+        PersonService ps = (persons, insName) -> persons.stream().filter(person -> person.getName().equals(insName)).collect(Collectors.toList()).get(0);
+        System.out.println(arr);
+        System.out.println(name + " 검색 : " + ps.search(arr, name));
     }
 }
