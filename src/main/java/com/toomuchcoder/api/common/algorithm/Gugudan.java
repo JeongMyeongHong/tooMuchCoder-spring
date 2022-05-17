@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 /**
  * packageName   :   com.toomuchcoder.api.common.algorithm
@@ -20,6 +23,13 @@ import lombok.NoArgsConstructor;
 public class Gugudan {
     @Builder @Getter @AllArgsConstructor @NoArgsConstructor
     private static class Solution{
-        private int a;
+        private List<Integer> list;
+    }
+    @FunctionalInterface interface SolutionService{
+        String solution();
+    }
+    @Test
+    void testSolution(){
+
     }
 }
