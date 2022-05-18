@@ -20,7 +20,6 @@ import java.util.List;
  * ============================================
  * 2022-05-17      JeongmyoengHong     최초 생성
  */
-// 나
 public class Fruits {
     @Builder
     @Getter
@@ -31,7 +30,7 @@ public class Fruits {
         int grape;
         int orange;
     }
-    @FunctionalInterface interface SolutionService<T, R>{
+    @FunctionalInterface interface IS<T, R>{
         R solution(T t);
     }
     @Test
@@ -45,7 +44,7 @@ public class Fruits {
                 Solution.builder().apple(35000).grape(30000).orange(25000).build(),
                 Solution.builder().apple(50000).grape(23000).orange(10000).build()
         );
-        SolutionService<List<Solution>, String> s = e -> {
+        IS<List<Solution>, String> s = e -> {
             int apple = 0;
             int grape = 0;
             int orange = 0;

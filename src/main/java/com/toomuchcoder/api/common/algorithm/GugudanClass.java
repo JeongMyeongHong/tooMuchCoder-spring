@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -19,17 +20,31 @@ import java.util.List;
  * ============================================
  * 2022-05-17      JeongmyoengHong     최초 생성
  */
-// 혜민
-public class Gugudan {
+public class GugudanClass {
     @Builder @Getter @AllArgsConstructor @NoArgsConstructor
     private static class Solution{
-        private List<Integer> list;
-    }
-    @FunctionalInterface interface SolutionService{
-        String solution();
-    }
-    @Test
-    void testSolution(){
+        private int[][] arr;
 
+        @Override
+        public String toString() {
+            return String.format("");
+        }
+    }
+    @FunctionalInterface interface IS{
+        void solution();
+    }
+
+    @Test
+    void test() {
+        IS f = () -> {};
+        for(int k = 2; k < 10; k+=4) {
+            for (int i = 1; i < 10; i++) {
+                for (int j = k; j < k+4; j++) {
+                    System.out.print(j + "*" + i+ "=" +(j*i)+"\t");
+                }
+                System.out.println();
+            }
+            System.out.println();
+        }
     }
 }

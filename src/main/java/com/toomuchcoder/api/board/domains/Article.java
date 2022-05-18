@@ -16,17 +16,17 @@ import javax.persistence.*;
  * ============================================
  * 2022-05-09      JeongmyoengHong     최초 생성
  */
-@Data
-@Component
-@Entity
-@Table(name="articles")
+//@Data
+//@Component
+//@Entity
+//@Table(name="articles")
 public class Article {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
-    @Column(nullable = false) private String projects;
-    @Column(nullable = false) private String startDate;
-    @Column(nullable = false) private String status;
-    @Column(nullable = false) private String team;
-    @Column(nullable = false) private String progress;
-    @Column(nullable = false) private String action;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
+//    @Column(nullable = false) private String projects;
+//    @Column(nullable = false) private String startDate;
+//    @Column(nullable = false) private String status;
+//    @Column(nullable = false) private String team;
+//    @Column(nullable = false) private String progress;
+//    @Column(nullable = false) private String action;
 }

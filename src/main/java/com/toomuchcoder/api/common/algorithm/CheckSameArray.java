@@ -20,22 +20,27 @@ import java.util.List;
  * ============================================
  * 2022-05-17      JeongmyoengHong     최초 생성
  */
-// 배열 [1, 3, 2], [2, 3, 1] 은아
+// 배열 [1, 3, 2], [2, 3, 1]`
 public class CheckSameArray {
     @Builder @Getter @AllArgsConstructor @NoArgsConstructor
     private static class Solution{
         private List<Integer> list;
     }
     @FunctionalInterface interface SolutionService{
-        Boolean solution(Solution solution1, Solution solution2);
+        Boolean solution(List<Solution> ls);
     }
     @Test
     void testSolution(){
         List<Solution> ls = Arrays.asList(
-                Solution.builder().list(Arrays.asList(1, 3, 2)).build(),
-                Solution.builder().list(Arrays.asList(2, 3, 1)).build()
+                Solution.builder().list(Arrays.asList(1, 3, 2, 1)).build(),
+                Solution.builder().list(Arrays.asList(2, 3, 1, 2)).build()
         );
-        SolutionService sol = (x, y) -> x.getList().containsAll(y.getList());
-        System.out.println(sol.solution(ls.get(0), ls.get(1)));
+        SolutionService sol = (x) -> x.get(0).getList().containsAll(x.get(1).getList());
+        SolutionService sol2 = (x) -> {
+            List<Integer> list = x.get(0).getList();
+            List<Integer> list2 = x.get(1).getList();
+            return true;
+        };
+        System.out.println(sol.solution(ls));
     }
 }

@@ -1,9 +1,13 @@
 package com.toomuchcoder.api.auth.domains;
 
-import lombok.Data;
+import com.sun.istack.NotNull;
+import lombok.*;
+import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName   :   com.toomuchcoder.api.domains
@@ -16,20 +20,21 @@ import javax.persistence.*;
  * ============================================
  * 2022-05-03      JeongmyoengHong     최초 생성
  */
-@Data // 게터세터
-@Component // 컴포넌트는 property, method의 집합이다.
-@Entity //
+@Builder
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@Component
+@Entity
 @Table(name="users")
 public class User {
+    @Id @Column(name = "user_id") @GeneratedValue private long userId;
+    @Column private @NotNull String username;
+    @Column private @NotNull String password;
+    @Column private @NotNull String name;
+    @Column private @NotNull String email;
+    @Column(name = "reg_date") @NotNull private String regDate;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    @Column(nullable = false) private String userid;
-    @Column(nullable = false) private String password;
-    @Column(nullable = false) private String email;
-    @Column(nullable = false) private String name;
-    private String phone;
-    private String birth;
-    private String address;
+    @OneToMany(mappedBy = "user")
+    List<Article> articles = new ArrayList<>();
 }

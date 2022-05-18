@@ -16,11 +16,11 @@ import javax.persistence.*;
  * ============================================
  * 2022-05-09      JeongmyoengHong     최초 생성
  */
-@Data
-@Component
-@Entity
-@Table(name = "comments")
+//@Data
+//@Component
+//@Entity
+//@Table(name = "comments")
 public class Comment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
 }
