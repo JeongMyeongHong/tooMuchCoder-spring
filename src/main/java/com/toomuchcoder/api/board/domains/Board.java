@@ -1,9 +1,12 @@
 package com.toomuchcoder.api.board.domains;
 
-import lombok.Data;
+import com.sun.istack.NotNull;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName   :   com.toomuchcoder.api.domains
@@ -16,11 +19,22 @@ import javax.persistence.*;
  * ============================================
  * 2022-05-04      JeongmyoengHong     최초 생성
  */
-//@Data
-//@Component
-//@Entity
-//@Table(name = "boards")
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Component
+@Entity
+@Table(name = "boards")
 public class Board {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
+    @Id @Column(name = "board_id") @GeneratedValue private long boardId;
+    @Column @NotNull
+    private String boardName;
+    @Column(name = "created_date") @NotNull private String createDate;
+
+    @OneToMany(mappedBy = "board")
+    List<Article> articles = new ArrayList<>(); // board가 들어갈 공간을 만들어둬야 들어갈 수 있다.
+
+    @OneToMany(mappedBy = "boardComment")
+    List<Comment> comments = new ArrayList<>();
 }

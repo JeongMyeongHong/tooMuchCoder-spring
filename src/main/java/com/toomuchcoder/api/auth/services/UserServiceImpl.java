@@ -2,14 +2,15 @@ package com.toomuchcoder.api.auth.services;
 
 import com.toomuchcoder.api.auth.repositories.UserRepository;
 import com.toomuchcoder.api.auth.domains.User;
-import com.toomuchcoder.api.common.dataStructure.Box;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -30,7 +31,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String login(User user) {
-        return repository.login(user);
+        return null;
+//        return repository.login(user);
     }
 
     @Override
@@ -55,7 +57,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String put(User user) {
-        return repository.put(user);
+        return null;
+//        return repository.put(user);
     }
 
     @Override
@@ -85,9 +88,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> listFindByUserName(String name) {
         List<User> ls = repository.findAll();
-        Box<String, User> box = new Box<>();
-        box.listFindByUserName(name);
-        //ls.stream().filter(...)
+        Map<String, User> box = new HashMap<>();
         return null;
     }
 }

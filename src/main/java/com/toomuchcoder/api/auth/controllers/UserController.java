@@ -2,6 +2,7 @@ package com.toomuchcoder.api.auth.controllers;
 
 import com.toomuchcoder.api.auth.domains.User;
 import com.toomuchcoder.api.auth.services.UserService;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,8 +24,8 @@ import java.util.Optional;
  * 2022-05-03      JeongmyoengHong     최초 생성
  */
 @RestController // 컨트롤러 컴포넌트 빈 객체 생성.
-@RequestMapping("/user") // 라우터 설정
-@RequiredArgsConstructor // 필수
+@RequestMapping("/user")
+@RequiredArgsConstructor
 
 public class UserController {
 

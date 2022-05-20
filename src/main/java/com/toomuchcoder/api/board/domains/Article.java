@@ -1,6 +1,8 @@
 package com.toomuchcoder.api.board.domains;
 
-import lombok.Data;
+import com.sun.istack.NotNull;
+import com.toomuchcoder.api.auth.domains.User;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -16,17 +18,26 @@ import javax.persistence.*;
  * ============================================
  * 2022-05-09      JeongmyoengHong     최초 생성
  */
-//@Data
-//@Component
-//@Entity
-//@Table(name="articles")
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Component
+@Entity
+@Table(name = "articles")
 public class Article {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
-//    @Column(nullable = false) private String projects;
-//    @Column(nullable = false) private String startDate;
-//    @Column(nullable = false) private String status;
-//    @Column(nullable = false) private String team;
-//    @Column(nullable = false) private String progress;
-//    @Column(nullable = false) private String action;
+    @Id @Column(name = "article_id") @GeneratedValue private long articleId;
+    @Column @NotNull
+    private String title;
+    @Column @NotNull private String content;
+    @Column(name = "written_date") @NotNull private String writtenDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
 }
+

@@ -54,7 +54,7 @@ public class ArticleController {
         return service.delete(article);
     }
 
-    @PostMapping("/join")
+    @PostMapping("/save")
     public String save(@RequestBody Article Article) {
         return service.save(Article);
     }

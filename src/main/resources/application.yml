@@ -1,13 +1,13 @@
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/TMC?characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mariadb://localhost:3306/tmc?characterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: root
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
 
 
     properties:

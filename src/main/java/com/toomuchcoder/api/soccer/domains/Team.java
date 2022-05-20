@@ -1,9 +1,11 @@
 package com.toomuchcoder.api.soccer.domains;
 
-import lombok.Data;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName   :   com.toomuchcoder.api.soccer.domains
@@ -17,19 +19,22 @@ import javax.persistence.*;
  * 2022-05-09      JeongmyoengHong     최초 생성
  */
 
-@Data
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 @Component
 @Entity
 @Table(name = "teams")
 public class Team {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
-    private String teamid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) private long teamNo;
+    @Column(nullable = false) private String teamId;
     private String regionName;
     private String teamName;
     private String eTeamName;
-    private String orig;
-    private String stadiumid;
+    private String origYyyy;
+    private String stadiumId;
     private String zipCode1;
     private String zipCode2;
     private String address;
@@ -38,4 +43,7 @@ public class Team {
     private String fax;
     private String homepage;
     private String owner;
+
+    @OneToMany(mappedBy = "team")
+    private List<Player> players = new ArrayList<>();
 }

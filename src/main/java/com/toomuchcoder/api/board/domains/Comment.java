@@ -1,6 +1,7 @@
 package com.toomuchcoder.api.board.domains;
 
-import lombok.Data;
+import com.sun.istack.NotNull;
+import lombok.*;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -16,11 +17,20 @@ import javax.persistence.*;
  * ============================================
  * 2022-05-09      JeongmyoengHong     최초 생성
  */
-//@Data
-//@Component
-//@Entity
-//@Table(name = "comments")
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Component
+@Entity
+@Table(name = "comments")
 public class Comment {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY) private long id;
+    @Id @Column(name = "comment_id") @GeneratedValue private long commentId;
+    @Column @NotNull
+    private String commentName;
+    @Column(name = "created_date") @NotNull private String createDate;
+
+    @ManyToOne
+    @JoinColumn(name = "board_id")
+    Board boardComment;
 }
