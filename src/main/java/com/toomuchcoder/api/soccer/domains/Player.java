@@ -20,6 +20,7 @@ import javax.persistence.*;
 @Builder
 @Getter
 @AllArgsConstructor
+
 @NoArgsConstructor
 @Component
 @Entity
@@ -28,7 +29,7 @@ public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) private long playerNo;
     @Column(nullable = false) private String playerId;
-    @Column(nullable = false) private String TeamId;
+    @Column(nullable = false) private String teamId;
     @Column(nullable = false) private String playerName;
     private String ePlayerName;
     private String nickname;

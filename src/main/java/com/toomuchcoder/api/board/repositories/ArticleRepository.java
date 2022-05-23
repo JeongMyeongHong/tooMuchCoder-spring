@@ -18,7 +18,7 @@ import org.springframework.stereotype.Repository;
  */
 interface ArticleCustomRepository{
     // 000. title과 content를 수정하시오
-    Article update(Article article);
+//    Article update(Article article);
 }
 @Repository
 public interface ArticleRepository extends JpaRepository<Article, Long>, ArticleCustomRepository{
