@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.auth.controllers;
+package com.toomuchcoder.api.user.controllers;
 
 /**
  * packageName   :   com.toomuchcoder.api.auth.controllers

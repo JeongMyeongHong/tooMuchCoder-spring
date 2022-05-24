@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.security.domains;
+package com.toomuchcoder.api.auth.domains;
 
 import lombok.Builder;
 import lombok.Getter;

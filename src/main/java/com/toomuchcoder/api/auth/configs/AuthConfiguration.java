@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.security.configs;
+package com.toomuchcoder.api.auth.configs;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -19,12 +19,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
  * 2022-05-23      JeongmyoengHong     최초 생성
  */
 @Configuration
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class AuthConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers(HttpMethod.OPTIONS, "*/**") //antMatchers  **는 폴더(디렉토리 이름) *는 파일 이름
-                .antMatchers("/");
+                .antMatchers("/"); //홈은 보안 허용해줌.
     }
 
     @Override

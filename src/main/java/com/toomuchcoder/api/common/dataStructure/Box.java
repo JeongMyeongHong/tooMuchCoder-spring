@@ -1,6 +1,6 @@
 package com.toomuchcoder.api.common.dataStructure;
 
-import com.toomuchcoder.api.auth.domains.User;
+import com.toomuchcoder.api.user.domains.User;
 import lombok.Data;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;

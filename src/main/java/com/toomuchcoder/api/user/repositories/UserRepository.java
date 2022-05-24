@@ -1,9 +1,12 @@
-package com.toomuchcoder.api.auth.repositories;
+package com.toomuchcoder.api.user.repositories;
 
 
-import com.toomuchcoder.api.auth.domains.User;
+import com.toomuchcoder.api.user.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /**
  * packageName   :   com.toomuchcoder.api.repositories
@@ -19,13 +22,19 @@ import org.springframework.stereotype.Repository;
 
 interface UserCustomRepository{
     // 000. 사용자의 비밀번호와 이메일을 수정하시오
+    @Query(value = "")
     void update(User user);
+
+    @Query(value = "")
     String login(User user);
 
+    @Query(value = "")
     String put(User user);
+
 }
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
+    Optional<User> findByUsername(String Username);
 
 }
 

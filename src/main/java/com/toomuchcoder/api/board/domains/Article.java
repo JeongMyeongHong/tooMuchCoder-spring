@@ -1,7 +1,7 @@
 package com.toomuchcoder.api.board.domains;
 
 import com.sun.istack.NotNull;
-import com.toomuchcoder.api.auth.domains.User;
+import com.toomuchcoder.api.user.domains.User;
 import lombok.*;
 import org.springframework.stereotype.Component;
 

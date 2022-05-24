@@ -1,7 +1,7 @@
-package com.toomuchcoder.api.auth.services;
+package com.toomuchcoder.api.user.services;
 
-import com.toomuchcoder.api.auth.repositories.UserRepository;
-import com.toomuchcoder.api.auth.domains.User;
+import com.toomuchcoder.api.user.repositories.UserRepository;
+import com.toomuchcoder.api.user.domains.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
