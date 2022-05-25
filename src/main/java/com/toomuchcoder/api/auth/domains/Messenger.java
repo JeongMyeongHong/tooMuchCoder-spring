@@ -16,6 +16,5 @@ import lombok.Getter;
  */
 @Getter @Builder
 public class Messenger { //이 모듈은 스프링이 알면 안좋다. 보안이 안좋아짐. 그래서 @Component를 걸지 않아서 스프링이 모르게 한다.
-    private String message, code;
-    private int status;
+    private String message, code, token;
 }
