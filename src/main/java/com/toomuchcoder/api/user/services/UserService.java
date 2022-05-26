@@ -22,7 +22,7 @@ import java.util.Optional;
  * 2022-05-03      JeongmyoengHong     최초 생성
  */
 public interface UserService {
-    UserDTO login(User user);
+    UserDTO login(UserDTO user);
 
     List<User> findAll();
 
@@ -36,7 +36,7 @@ public interface UserService {
 
     Messenger delete(User user);
 
-    Messenger save(User user);
+    Messenger save(UserDTO user);
 
     Optional<User> findById(String userid);
 

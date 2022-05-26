@@ -1,9 +1,13 @@
 package com.toomuchcoder.api.common.lambdas;
 
+import org.junit.jupiter.api.Test;
+
 import static com.toomuchcoder.api.common.dataStructure.AppleApp.Apple;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.function.*;
 
 /**
@@ -19,7 +23,8 @@ import java.util.function.*;
  * 2022-05-12      JeongmyoengHong     함수형 객체, 람다
  */
 public class Lambda {
-    public static void main(String[] args) {
+    @Test
+    void test(){
         System.out.println(integer("900"));
         System.out.println(new Apple.Builder().color("RED").origin("영동").price(1000).build());
         System.out.println(
@@ -57,6 +62,16 @@ public class Lambda {
         Function<Object, String> f = String::valueOf;
         return f.apply(object);
     }
+
+    public static String getDate() {
+        Supplier<String> s = () -> new SimpleDateFormat("yy-MM-dd hh:mm").format(new Date());
+        return s.get();
+    }
+    public static Date getDateAsDateType() {
+        Supplier<Date> s = Date::new;
+        return s.get();
+    }
+
 
     public static boolean equals(String s1, String s2) {
         BiPredicate<String, String> f = String::equals;

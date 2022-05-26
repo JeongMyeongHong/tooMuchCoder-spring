@@ -2,6 +2,7 @@ package com.toomuchcoder.api.user.domains;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import lombok.ToString;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.List;
  */
 @Component
 @Data
+@ToString
 public class UserDTO {
     @ApiModelProperty(position = 1) private long userId;
     @ApiModelProperty(position = 2) private String username;

@@ -3,7 +3,6 @@ package com.toomuchcoder.api.user.services;
 import com.toomuchcoder.api.auth.configs.AuthProvider;
 import com.toomuchcoder.api.auth.domains.Messenger;
 import com.toomuchcoder.api.auth.exception.SecurityRuntimeException;
-import com.toomuchcoder.api.common.lambdas.Lambda;
 import com.toomuchcoder.api.user.domains.Role;
 import com.toomuchcoder.api.user.domains.UserDTO;
 import com.toomuchcoder.api.user.repositories.UserRepository;
@@ -19,8 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-import static com.toomuchcoder.api.common.lambdas.Lambda.longParse;
-import static com.toomuchcoder.api.common.lambdas.Lambda.string;
+import static com.toomuchcoder.api.common.lambdas.Lambda.*;
 
 /**
  * packageName   :   com.toomuchcoder.api.services
@@ -42,17 +40,24 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
 
     @Override
-    public UserDTO login(User user) {
+    public UserDTO login(UserDTO paramUser) {
         try {
-            UserDTO userDTO = modelMapper.map(user, UserDTO.class);
-            User findUser = repository.findByUsername(user.getUsername()).orElse(null);
-            String pw = repository.findByUsername(user.getUsername()).get().getPassword();
-            boolean checkPassword = encoder.matches(user.getPassword(), pw);
-            String username = user.getUsername();
-            List<Role> roles = findUser.getRoles();
-            String token = checkPassword ? provider.createToken(username, roles) : "Wrong Password";
-            userDTO.setToken(token);
-            return userDTO;
+            UserDTO returnUser = new UserDTO();
+            User findUser = repository.findByUsername(paramUser.getUsername()).orElse(null);
+            String username = paramUser.getUsername();
+            if (findUser != null){
+                boolean checkPassword = encoder.matches(paramUser.getPassword(), findUser.getPassword());
+                if (checkPassword){
+                    returnUser = modelMapper.map(findUser, UserDTO.class);
+                    String token = provider.createToken(username, returnUser.getRoles());
+                    returnUser.setToken(token);
+                } else{
+                    returnUser.setToken("WrongPW");
+                }
+            }else{
+                returnUser.setToken("NotExitsID");
+            }
+            return returnUser;
         } catch (Exception e) {
             throw new SecurityRuntimeException("유효하지 않은 아이디/비밀번호", HttpStatus.UNPROCESSABLE_ENTITY);
         }
@@ -90,15 +95,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Messenger save(User user) {
+    public Messenger save(UserDTO user) {
         String res = "";
         if (repository.findByUsername(user.getUsername()).isEmpty()) {
             List<Role> list = new ArrayList<>();
             list.add(Role.USER);
             repository.save(User.builder()
-                    .password(encoder.encode(user.getPassword()))
-                    .roles(list)
-                    .build());
+                            .username(user.getUsername())
+                            .password(encoder.encode(user.getPassword()))
+                            .name(user.getName())
+                            .email(user.getEmail())
+                            .regDate(user.getRegDate())
+                            .roles(list)
+                            .build());
             res = "SUCCESS";
         }else{
             res = "FAIL";

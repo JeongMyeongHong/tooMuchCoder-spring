@@ -66,9 +66,10 @@ public class AuthProvider implements AuthenticationProvider {
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(validity)
-                .signWith(SignatureAlgorithm.ES256, securityKey)
+                .signWith(SignatureAlgorithm.HS256, securityKey)
                 .compact();
     }
+
     public Authentication getAuthentication(String token){
         UserDetails auth = service.loadUserByUsername(token);
         return new UsernamePasswordAuthenticationToken(auth.getAuthorities(), "", auth.getAuthorities());
