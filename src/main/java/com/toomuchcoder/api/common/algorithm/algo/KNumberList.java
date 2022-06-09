@@ -65,16 +65,25 @@ public class KNumberList {
                 .build();
 
         SolutionService<Solution, Solution> f = e -> {
-            int[] sArray = e.array;
-            int[][] sCommands = e.commands;
-
+            int[] answer = new int[3];
+            int answerIndex = 0;
+            for (int[] command : e.getCommands()) {
+                int[] temp = new int[command[1] - command[0] + 1];
+                int tempIndex = 0;
+                for (int i = command[0]; i <= command[1]; i++) {
+                    temp[tempIndex] = e.getArray()[i - 1];
+                    tempIndex++;
+                }
+                Arrays.sort(temp);
+                answer[answerIndex] = temp[command[2] - 1];
+                answerIndex++;
+            }
             return Solution.builder()
                     .array(e.getArray())
                     .commands(e.getCommands())
-                    .answer(null)
+                    .answer(answer)
                     .build();
         };
-
         System.out.println(f.solution(s));
     }
 }
