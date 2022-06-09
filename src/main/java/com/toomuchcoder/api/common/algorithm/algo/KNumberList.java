@@ -71,12 +71,10 @@ public class KNumberList {
                 int[] temp = new int[command[1] - command[0] + 1];
                 int tempIndex = 0;
                 for (int i = command[0]; i <= command[1]; i++) {
-                    temp[tempIndex] = e.getArray()[i - 1];
-                    tempIndex++;
+                    temp[tempIndex++] = e.getArray()[i - 1];
                 }
                 Arrays.sort(temp);
-                answer[answerIndex] = temp[command[2] - 1];
-                answerIndex++;
+                answer[answerIndex++] = temp[command[2] - 1];
             }
             return Solution.builder()
                     .array(e.getArray())
