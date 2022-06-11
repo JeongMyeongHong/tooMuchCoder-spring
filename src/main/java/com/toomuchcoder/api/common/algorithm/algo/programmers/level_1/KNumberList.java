@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.common.algorithm.algo;
+package com.toomuchcoder.api.common.algorithm.algo.programmers.level_1;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +31,7 @@ import java.util.Arrays;
  * DATE             AUTHOR              NOTE
  * ============================================
  * 2022-06-05      JeongmyoengHong     최초 생성
+ * 2022-06-09      JeongmyoengHong     최초 문제 풀이
  */
 
 public class KNumberList {

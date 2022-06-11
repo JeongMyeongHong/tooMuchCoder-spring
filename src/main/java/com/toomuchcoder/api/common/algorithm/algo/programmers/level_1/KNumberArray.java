@@ -1,4 +1,4 @@
-package com.toomuchcoder.api.common.algorithm.algo;
+package com.toomuchcoder.api.common.algorithm.algo.programmers.level_1;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -46,8 +46,31 @@ public class KNumberArray {
                     Arrays.toString(array), Arrays.deepToString(commands), Arrays.toString(aReturn));
         }
     }
-    @FunctionalInterface private interface ISolution<T, R>{
+    @FunctionalInterface private interface SolutionService<T, R>{
         R solution(T t);
+    }
+    static class Service{
+        Solution test(Solution s){
+            SolutionService<Solution, Solution> f = e -> {
+                int[] answer = new int[3];
+                int answerIndex = 0;
+                for (int[] command : e.getCommands()) {
+                    int[] temp = new int[command[1] - command[0] + 1];
+                    int tempIndex = 0;
+                    for (int i = command[0]; i <= command[1]; i++) {
+                        temp[tempIndex++] = e.getArray()[i - 1];
+                    }
+                    Arrays.sort(temp);
+                    answer[answerIndex++] = temp[command[2] - 1];
+                }
+                return Solution.builder()
+                        .array(e.getArray())
+                        .commands(e.getCommands())
+                        .aReturn(answer)
+                        .build();
+            };
+            return f.solution(s);
+        }
     }
     @Test
     void testSolution(){
@@ -58,13 +81,7 @@ public class KNumberArray {
                 .array(array)
                 .commands(commands)
                 .build();
-        ISolution<Solution, Solution> f = e -> {
-            return Solution.builder()
-                    .array(e.getArray())
-                    .commands(e.getCommands())
-                    .aReturn(null)
-                    .build();
-        };
-        System.out.println(f.solution(s));
+
+        System.out.println(new Service().test(s));
     }
 }
