@@ -1,4 +1,4 @@
-package kr.scalar.api.common._bruteForce;
+package com.toomuchcoder.api.common.algorithm.algo._bruteForce;
 import java.util.Scanner;
 /**
  * packageName: kr.scalar.api.common.algo01

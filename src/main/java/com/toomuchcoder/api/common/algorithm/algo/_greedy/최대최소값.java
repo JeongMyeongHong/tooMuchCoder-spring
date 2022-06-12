@@ -1,4 +1,4 @@
-package kr.scalar.api.common._greedy;
+package com.toomuchcoder.api.common.algorithm.algo._greedy;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

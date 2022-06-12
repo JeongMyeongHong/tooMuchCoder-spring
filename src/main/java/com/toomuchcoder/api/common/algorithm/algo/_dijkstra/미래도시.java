@@ -1,4 +1,4 @@
-package kr.scalar.api.common._dijkstra;
+package com.toomuchcoder.api.common.algorithm.algo._dijkstra;
 
 /**
  * packageName: kr.scalar.api.common._dijkstra

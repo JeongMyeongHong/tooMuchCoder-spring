@@ -1,4 +1,4 @@
-package kr.scalar.api.common._graph;
+package com.toomuchcoder.api.common.algorithm.algo._graph;
 
 /**
  * packageName: kr.scalar.api.common._graph

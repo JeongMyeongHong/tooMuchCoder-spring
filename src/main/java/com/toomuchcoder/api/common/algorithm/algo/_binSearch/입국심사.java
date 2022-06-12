@@ -1,4 +1,4 @@
-package kr.scalar.api.common._binSearch;
+package com.toomuchcoder.api.common.algorithm.algo._binSearch;
 
 /**
  * packageName: kr.scalar.api.common._binSearch

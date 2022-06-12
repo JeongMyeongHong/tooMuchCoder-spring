@@ -6,7 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * packageName   :   com.toomuchcoder.api.common.algorithm.algo
@@ -35,54 +38,52 @@ import java.util.Arrays;
  */
 
 public class KNumberList {
-    @Builder
-    @Getter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class Solution {
-        private int[] array;
+    @Builder @Getter @NoArgsConstructor @AllArgsConstructor
+    public static class Solution{
+        private int[] array, aReturn;
         private int[][] commands;
-        private int[] answer;
 
         @Override
-        public String toString() {
-            return String.format("array: %s\ncommands: %s\nreturn: %s\n",
-                    Arrays.toString(array), Arrays.deepToString(commands), Arrays.toString(answer));
+        public String toString(){
+            return String.format("array : %s\n" +
+                            "commands : %s\n" +
+                            "실행 결과 : %s",
+                    Arrays.toString(array), Arrays.deepToString(commands), Arrays.toString(aReturn));
         }
     }
-
-    @FunctionalInterface
-    private interface SolutionService<T, R> {
+    @FunctionalInterface private interface SolutionService<T, R>{
         R solution(T t);
     }
+    static class Service{
+        Solution test(Solution s){
+            SolutionService<Solution, Solution> f = e -> {
+                List<Integer> answer = new ArrayList<>();
+                for (int[] command : e.getCommands()) {
+                    List<Integer> temp = Arrays.stream(e.getArray()).boxed().collect(Collectors.toList())
+                            .subList(command[0]-1, command[1]);
+                    temp = temp.stream().sorted().collect(Collectors.toList());
+                    answer.add(temp.get(command[2] - 1));
+                }
 
+                return Solution.builder()
+                        .array(e.getArray())
+                        .commands(e.getCommands())
+                        .aReturn(answer.stream().mapToInt(i->i).toArray())
+                        .build();
+            };
+            return f.solution(s);
+        }
+    }
     @Test
-    void testSolution() {
+    void testSolution(){
         int[] array = {1, 5, 2, 6, 3, 7, 4};
         int[][] commands = {{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
+
         Solution s = Solution.builder()
                 .array(array)
                 .commands(commands)
                 .build();
 
-        SolutionService<Solution, Solution> f = e -> {
-            int[] answer = new int[3];
-            int answerIndex = 0;
-            for (int[] command : e.getCommands()) {
-                int[] temp = new int[command[1] - command[0] + 1];
-                int tempIndex = 0;
-                for (int i = command[0]; i <= command[1]; i++) {
-                    temp[tempIndex++] = e.getArray()[i - 1];
-                }
-                Arrays.sort(temp);
-                answer[answerIndex++] = temp[command[2] - 1];
-            }
-            return Solution.builder()
-                    .array(e.getArray())
-                    .commands(e.getCommands())
-                    .answer(answer)
-                    .build();
-        };
-        System.out.println(f.solution(s));
+        System.out.println(new Service().test(s));
     }
 }

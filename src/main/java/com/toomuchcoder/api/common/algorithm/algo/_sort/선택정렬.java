@@ -1,6 +1,5 @@
-package kr.scalar.api.common._sort;
+package com.toomuchcoder.api.common.algorithm.algo._sort;
 
-import kr.scalar.api.common._bruteForce.계산기;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.junit.jupiter.api.Test;

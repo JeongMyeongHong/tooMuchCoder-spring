@@ -1,4 +1,4 @@
-package kr.scalar.api.common._hash;
+package com.toomuchcoder.api.common.algorithm.algo._hash;
 
 /**
  * packageName: kr.scalar.api.common._hash

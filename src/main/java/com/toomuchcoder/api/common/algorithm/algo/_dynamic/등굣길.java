@@ -1,4 +1,4 @@
-package kr.scalar.api.common._dynamic;
+package com.toomuchcoder.api.common.algorithm.algo._dynamic;
 
 /**
  * packageName: kr.scalar.api.common._dynamic

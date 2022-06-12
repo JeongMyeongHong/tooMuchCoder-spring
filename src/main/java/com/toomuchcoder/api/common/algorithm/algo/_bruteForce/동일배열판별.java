@@ -1,4 +1,5 @@
-package kr.scalar.api.common._bruteForce;
+package com.toomuchcoder.api.common.algorithm.algo._bruteForce;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

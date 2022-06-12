@@ -1,6 +1,6 @@
-package kr.scalar.api.common._bruteForce;
+package com.toomuchcoder.api.common.algorithm.algo._bruteForce;
 
-import kr.scalar.api.common._greedy.최대최소값;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.junit.jupiter.api.Test;

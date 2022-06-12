@@ -1,4 +1,4 @@
-package kr.scalar.api.common._heap;
+package com.toomuchcoder.api.common.algorithm.algo._heap;
 
 /**
  * packageName: kr.scalar.api.common.heap

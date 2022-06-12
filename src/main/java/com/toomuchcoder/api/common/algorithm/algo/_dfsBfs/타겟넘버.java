@@ -1,4 +1,4 @@
-package kr.scalar.api.common._dfsBfs;
+package com.toomuchcoder.api.common.algorithm.algo._dfsBfs;
 
 /**
  * packageName: kr.scalar.api.common._dfsBfs

@@ -1,4 +1,4 @@
-package kr.scalar.api.common._stackQueue;
+package com.toomuchcoder.api.common.algorithm.algo._stackQueue;
 
 /**
  * packageName: kr.scalar.api.common._stackQueue

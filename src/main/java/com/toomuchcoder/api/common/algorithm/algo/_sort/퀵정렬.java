@@ -1,4 +1,4 @@
-package kr.scalar.api.common._sort;
+package com.toomuchcoder.api.common.algorithm.algo._sort;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
