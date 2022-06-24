@@ -32,9 +32,11 @@ public class Board {
     private String boardName;
     @Column(name = "created_date") @NotNull private String createDate;
 
+    @Builder.Default
     @OneToMany(mappedBy = "board")
     List<Article> articles = new ArrayList<>(); // board가 들어갈 공간을 만들어둬야 들어갈 수 있다.
 
+    @Builder.Default
     @OneToMany(mappedBy = "boardComment")
     List<Comment> comments = new ArrayList<>();
 }

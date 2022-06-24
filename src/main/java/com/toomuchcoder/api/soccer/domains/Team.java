@@ -44,6 +44,7 @@ public class Team {
     private String homepage;
     private String owner;
 
+    @Builder.Default
     @OneToMany(mappedBy = "team")
     private List<Player> players = new ArrayList<>();
 }

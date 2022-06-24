@@ -35,8 +35,10 @@ public class User {
     @Column private @NotNull String email;
     @Column(name = "reg_date") @NotNull private String regDate;
 
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     List<Article> articles = new ArrayList<>();
+
 
     @ElementCollection(fetch = FetchType.EAGER)
     public List<Role> roles;

@@ -36,6 +36,7 @@ public class Stadium {
     private String ddd;
     private String tel;
 
+    @Builder.Default
     @OneToMany(mappedBy = "stadium")
     private List<Schedule> schedules = new ArrayList<>();
 }
